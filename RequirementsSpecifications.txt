@@ -15,22 +15,20 @@ Cerinte :
 •	produsele vor avea un tag
 •	user-ul va putea cauta pe baza tag-ului in lista de produse
 •	lista de produse va putea fi filtrata pe baza unor categorii
-•	pentru orice operatie ( comanda , anulare comanda , retur , schimbare setari ) pe care o face user-ul pe site aceasta va primi un mail de confirmare
+
 
 Specificatii :
 •	site-ul va fi format din 2 proiecte : front-end si back-end
 •	front-end-ul va fi realizat in Angular 4 ( limbajul  :Typescript  )
 •	vom folosi npm pentru a gestiona modulele instalate in Angular
-•	back-end-ul il vom face in Java si SQL
+•	back-end-ul il vom face in NodeJs si MongoDB
 •	vom avea un server local pe care vom incarca pozele , iar in baza de data vom salva un path catre acestea
 •	vom avea diferite API-uri pentru a implementa functionalitatea site-ului
 •	comunicarea intre site si server se va face pe baza JSON-urilor
 •	admin-ul va adauga produse in baza de date
-•	vom folosi Microsoft SQL Server
+•	vom folosi Mongo
 •	in baza de date vor fi salvate informatiile utilizatorului
 •	pentru componente vom folosi Angular Material
 •	pentru icoane vom folosi Material Icons
-•	login-ul se va putea face si pe baza Facebook-ului
-•	mail-urile vor fi trimise din back-end prin accesarea unui API
 •	erorile vor fi tratate de catre API
 
