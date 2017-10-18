@@ -28,7 +28,7 @@ Specificatii :
 •	admin-ul va adauga produse in baza de date
 •	vom folosi Mongo
 •	in baza de date vor fi salvate informatiile utilizatorului
-•	pentru componente vom folosi Angular Material
-•	pentru icoane vom folosi Material Icons
+•	pentru componente vom folosi Bootstrap
+•	pentru icoane vom folosi Font Awesome
 •	erorile vor fi tratate de catre API
 
