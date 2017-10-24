@@ -21,7 +21,8 @@ import { routing } from './app.routing';
   imports: [
     BrowserModule,
 	routing,
-	FormsModule
+  FormsModule,
+  HttpModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
