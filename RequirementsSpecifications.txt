@@ -1,34 +1,31 @@
 PROIECT PW 	
 		
 Cerinte :
-•	un magazin online care va avea un admin , si utilizatori
-•	acestia isi vor putea crea cont si sa se logheze
-•	admin-ul va putea sterge cont-uri
-•	cont-ul este format din mail si parola
-•	user-ul va avea o pagina de setari , de unde isi va putea modifica parola , mail-ul , adresa
-•	admin-ul va fi cel care va adauga produse
-•	user-ul va putea comanda un produs( daca va mai fi in stoc)
-•	acesta va putea vizualiza un istoric al comenzilor si va putea efectua un retur
-•	utilizatorii vor putea lasa comentarii la fiecare produs si un rating
-•	admin-ul va putea sterge comentarii
-•	un admin va putea sa dea unui user drepturi de admin
-•	produsele vor avea un tag
-•	user-ul va putea cauta pe baza tag-ului in lista de produse
-•	lista de produse va putea fi filtrata pe baza unor categorii
-
+ï¿½	un magazin online care va avea un admin , si utilizatori
+ï¿½	acestia isi vor putea crea cont si sa se logheze
+ï¿½	admin-ul va putea sterge cont-uri
+ï¿½	cont-ul este format din mail si parola
+ï¿½	user-ul va avea o pagina de setari , de unde isi va putea modifica parola , mail-ul , adresa
+ï¿½	admin-ul va fi cel care va adauga produse
+ï¿½	user-ul va putea comanda un produs( daca va mai fi in stoc)
+ï¿½	acesta va putea vizualiza un istoric al comenzilor si va putea efectua un retur
+ï¿½	utilizatorii vor putea lasa comentarii la fiecare produs si un rating
+ï¿½	admin-ul va putea sterge comentarii
+ï¿½	un admin va putea sa dea unui user drepturi de admin
+ï¿½	produsele vor avea un tag
+ï¿½	user-ul va putea cauta pe baza tag-ului in lista de produse
 
 Specificatii :
-•	site-ul va fi format din 2 proiecte : front-end si back-end
-•	front-end-ul va fi realizat in Angular 4 ( limbajul  :Typescript  )
-•	vom folosi npm pentru a gestiona modulele instalate in Angular
-•	back-end-ul il vom face in NodeJs si MongoDB
-•	vom avea un server local pe care vom incarca pozele , iar in baza de data vom salva un path catre acestea
-•	vom avea diferite API-uri pentru a implementa functionalitatea site-ului
-•	comunicarea intre site si server se va face pe baza JSON-urilor
-•	admin-ul va adauga produse in baza de date
-•	vom folosi Mongo
-•	in baza de date vor fi salvate informatiile utilizatorului
-•	pentru componente vom folosi Bootstrap
-•	pentru icoane vom folosi Font Awesome
-•	erorile vor fi tratate de catre API
+ï¿½	site-ul va fi format din 2 proiecte : front-end si back-end
+ï¿½	front-end-ul va fi realizat in Angular 4 ( limbajul  :Typescript  )
+ï¿½	vom folosi npm pentru a gestiona modulele instalate in Angular
+ï¿½	back-end-ul il vom face in NodeJs si MongoDB
+ï¿½	vom avea diferite API-uri pentru a implementa functionalitatea site-ului
+ï¿½	comunicarea intre site si server se va face pe baza JSON-urilor
+ï¿½	admin-ul va adauga produse in baza de date
+ï¿½	vom folosi Mongo
+ï¿½	in baza de date vor fi salvate informatiile utilizatorului
+ï¿½	pentru componente vom folosi Bootstrap
+ï¿½	pentru icoane vom folosi Font Awesome
+ï¿½	erorile vor fi tratate de catre API
 

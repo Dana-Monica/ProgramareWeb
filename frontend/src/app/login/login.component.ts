@@ -20,11 +20,14 @@ export class LoginComponent implements OnInit {
     let body = JSON.stringify({ username, password });
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    this.http.post('http://localhost:8080/login', body, { headers: headers })
+    console.log(body);
+    this.http.post('http://localhost:8079/login', body, { headers: headers })
       .subscribe(
         response => {
-         // localStorage.setItem('id_token', response.json().id_token);
-          this.router.navigate(['']);
+          console.log("HELLO!");
+          localStorage.setItem('user', username);
+          localStorage.setItem('password', password);
+          this.router.navigate(['asdasd']);
         },
         error => {
           alert(error.text());
