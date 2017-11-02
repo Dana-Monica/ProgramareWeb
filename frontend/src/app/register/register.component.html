@@ -5,7 +5,7 @@
             <input type="text" class="form-control" name="nume" [(ngModel)]="model.nume" placeholder="Name" #nume="ngModel" required />
             <div *ngIf="f.submitted && !nume.valid" class="help-block">Full name is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !mail.valid }">
             <input type="text" class="form-control" name="mail" [(ngModel)]="model.mail" placeholder="mail" #mail="ngModel" required />
             <div *ngIf="f.submitted && !mail.valid" class="help-block">Email is required</div>
         </div>
