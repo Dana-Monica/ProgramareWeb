@@ -35,16 +35,18 @@ app.post('/login',function(req, res) {
 });
 
 app.post('/register',function(req, res) {
-	try{
-	nr=db.collection('User').insertOne({'user':req.body.usernam, 'password':req.body.passwor, 'mail':req.body.mail, 'nume':req.body.nume});
-	}catch(e)
-	{
-		console.log(e);
-		res.status(400);
-		res.send("Wrong crendetials");
-	}
-	console.log("1 document inserted");
-	res.status(200);
-	res.send("Good");
-	  
+	nr=db.collection('User').insertOne({'user':req.body.usernam, 'password':req.body.passwor, 'mail':req.body.mail, 'nume':req.body.nume},function(err,result){
+		if(err)
+		{
+			console.log(e);
+			res.status(400);
+			res.send("Wrong crendetials");
+		}
+		else
+		{
+			console.log("1 document inserted");
+			res.status(200);
+			res.send("Good");
+		}
+	});
 });
