@@ -32,6 +32,19 @@ app.post('/login',function(req, res) {
 			res.send("Wrong crendetials");
 		}
 	});
-	
-})
+});
 
+app.post('/register',function(req, res) {
+	try{
+	nr=db.collection('User').insertOne({'user':req.body.usernam, 'password':req.body.passwor, 'mail':req.body.mail, 'nume':req.body.nume});
+	}catch(e)
+	{
+		console.log(e);
+		res.status(400);
+		res.send("Wrong crendetials");
+	}
+	console.log("1 document inserted");
+	res.status(200);
+	res.send("Good");
+	  
+});

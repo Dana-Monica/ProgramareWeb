@@ -1,21 +1,21 @@
 <div class="col-md-6 col-md-offset-3">
     <h2 style="padding-left:40%">Register</h2>
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fullName.valid }">
-            <input type="text" class="form-control" name="fullName" [(ngModel)]="model.fullName" placeholder="Name" #fullName="ngModel" required />
-            <div *ngIf="f.submitted && !fullName.valid" class="help-block">Name is required</div>
+    <form name="form" (ngSubmit)="f.form.valid && register(model.nume,model.mail,model.usernam,model.passwor)" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nume.valid }">
+            <input type="text" class="form-control" name="nume" [(ngModel)]="model.nume" placeholder="Name" #nume="ngModel" required />
+            <div *ngIf="f.submitted && !nume.valid" class="help-block">Full name is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" placeholder="Email" #email="ngModel" required />
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+            <input type="text" class="form-control" name="mail" [(ngModel)]="model.mail" placeholder="mail" #mail="ngModel" required />
+            <div *ngIf="f.submitted && !mail.valid" class="help-block">Email is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !usernam.valid }">
+            <input type="text" class="form-control" name="usernam" [(ngModel)]="model.usernam" placeholder="Usernam" #usernam="ngModel" required />
+            <div *ngIf="f.submitted && !usernam.valid" class="help-block">Username is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !passwor.valid }">
+            <input type="password" class="form-control" name="passwor" [(ngModel)]="model.passwor" placeholder="Passwor" #passwor="ngModel" required />
+            <div *ngIf="f.submitted && !passwor.valid" class="help-block">Password is required</div>
         </div>
         <button [disabled]="loading" class="btn btn-primary" style="float : right">Register</button>
     </form>

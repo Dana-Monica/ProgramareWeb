@@ -11,15 +11,17 @@ export class LoginComponent implements OnInit {
   model : any = {};
   loading = false;
   
-  constructor(public router: Router, public http: Http) { }
+  constructor(public router: Router, public http: Http) {  }
 
   ngOnInit() {
   }
 
   login(username, password) {
+    
     let body = JSON.stringify({ username, password });
     let headers = new Headers();
     headers.append('Content-Type','application/json');
+
     console.log(body);
     this.http.post('http://localhost:8079/login', body, { headers: headers })
       .subscribe(
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
           console.log(error.text());
         }
       );
+
   }
   
 }
