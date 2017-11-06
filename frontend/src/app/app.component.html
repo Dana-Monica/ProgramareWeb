@@ -13,7 +13,7 @@
       <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
               <li>
-                  <a class="faa-parent ">
+                  <a class="faa-parent " [routerLink]="['/home']">
                      <i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
                   </a>
               </li>
@@ -23,7 +23,7 @@
                   </a>
               </li>
               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown">
+                  <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown" [routerLink]="['/gallery']">
                    <i class="fa fa-fw fa-lg fa-th faa-tada faa-fast"></i>Products
                    <span class="fa fa-caret-down"></span>
                   </a>
@@ -44,7 +44,7 @@
                     </a>
                    </li>	
                    <li>
-                    <a class="faa-parent animated-hover">
+                    <a class="faa-parent animated-hover" >
                      <i class="fa fa-fw fa-file-pdf-o faa-tada faa-fast"></i>Product Detail
                     </a>
                    </li>
