@@ -13,7 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/guards/auth.guard';
 
 import { routing } from './app.routing';
+import { ProductsComponent } from './products/products.component';
 
+import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { routing } from './app.routing';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    GalleryComponent
+    GalleryComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,12 @@ import { routing } from './app.routing';
   MatCardModule,
   MatButtonModule
   ],
-  providers: [AuthGuard],
+  providers: 
+    [AuthGuard,
+      {
+    provide: MATERIAL_SANITY_CHECKS,
+    useValue: false
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
