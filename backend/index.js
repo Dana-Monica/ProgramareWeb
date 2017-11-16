@@ -50,3 +50,38 @@ app.post('/register',function(req, res) {
 		}
 	});
 });
+
+app.get('/products',function(req, res) {
+	nr=db.collection('Produse').find({},function(err,result){
+		if(err)
+		{
+			console.log(e);
+			res.status(400);
+			res.send("Could not retrieve products from Mongo!");
+		}
+		else
+		{
+			console.log("received products from db");
+			res.status(200);
+			res.send(result);
+			//Return JSON
+		}
+	});
+});
+
+app.get('/products/information',function(req, res) {
+	nr=db.collection('Produse').findOne({'name':req.name},function(err,result){
+		if(err)
+		{
+			console.log(e);
+			res.status(400);
+			res.send("Could not retrieve products from Mongo!");
+		}
+		else
+		{
+			console.log("received products from db");
+			res.status(200);
+			res.send(result);
+		}
+	});
+});
