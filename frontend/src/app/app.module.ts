@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
+import { ProdComponent } from './prod/prod.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { AboutComponent } from './about/about.component';
 
@@ -30,6 +31,8 @@ import { ContactComponent } from './contact/contact.component';
     ProductsComponent,
     AboutComponent,
     ContactComponent
+    ProductsComponent,
+    ProdComponent
   ],
   imports: [
     BrowserModule,

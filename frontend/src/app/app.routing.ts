@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import {ContactComponent } from './contact/contact.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { ProductsComponent } from './products/products.component';
+import { ProdComponent } from './prod/prod.component';
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent }, //AuthGuard-ca sa vezi daca esti loghinat sau nu
@@ -15,6 +17,8 @@ const appRoutes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
 
+    { path: 'products', component: ProductsComponent },
+    { path: 'products/prod' , component:ProdComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: 'home' }
 ];
