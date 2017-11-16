@@ -11,11 +11,14 @@ import { RegisterComponent } from './register/register.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { AboutComponent } from './about/about.component';
 
 import { routing } from './app.routing';
 import { ProductsComponent } from './products/products.component';
 
 import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
+import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
     RegisterComponent,
     HomeComponent,
     GalleryComponent,
-    ProductsComponent
+    ProductsComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
