@@ -21,6 +21,7 @@ import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
 import { ContactComponent } from './contact/contact.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +30,12 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     GalleryComponent,
     ProductsComponent,
+<<<<<<< HEAD
     AboutComponent,
-    ContactComponent,
-    ProductsComponent,
+    ContactComponent
+=======
     ProdComponent
+>>>>>>> bcff6e0506cad37c4f7c350e5d60630743653fe9
   ],
   imports: [
     BrowserModule,
