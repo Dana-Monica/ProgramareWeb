@@ -90,10 +90,11 @@ app.get('/products/information',function(req, res) {
 
 
 app.get('/send/mail',function(req,res){
-	var email = req.body.email;
+	var email = req.body.mail;
 	var message = req.body.message;
-	var fullName = req.body.fullName;
-	db.collection('contacts').insertOne({'email':email, 'message':message, 'fullName':fullname},function(err,result){
+	var phone = req.body.phone;
+	var fullName = req.body.name;
+	db.collection('contacts').insertOne({'email':email, 'message':message, 'fullName':fullname,'phone':phone},function(err,result){
 		if(err)
 		{
 			console.log(e);
