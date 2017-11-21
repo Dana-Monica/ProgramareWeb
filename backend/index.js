@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 
+var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 var url = "mongodb://mtanase:mtanase@ds113445.mlab.com:13445/magazinpw";
@@ -85,3 +86,25 @@ app.get('/products/information',function(req, res) {
 		}
 	});
 });
+
+
+
+app.get('/send/mail',function(req,res){
+	var email = req.body.email;
+	var message = req.body.message;
+	var fullName = req.body.fullName;
+	db.collection('contacts').insertOne({'email':email, 'message':message, 'fullName':fullname},function(err,result){
+		if(err)
+		{
+			console.log(e);
+			res.status(400);
+			res.send("Could not insert the message into databse!");
+		}
+		else
+		{
+			console.log("Your message was inserted!");
+			res.status(200);
+			res.send("Your message was inserted!");
+		}
+	});
+})
