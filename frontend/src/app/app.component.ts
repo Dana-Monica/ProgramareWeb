@@ -31,6 +31,8 @@ export class AppComponent implements DoCheck {
     this.logged = false;
     console.log("removing items from local Storage");
     localStorage.removeItem("user");
+    this.cart = new Set();
+    console.log(this.cart);
     localStorage.removeItem("password");
   }
 
