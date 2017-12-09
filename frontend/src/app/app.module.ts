@@ -19,6 +19,7 @@ import { ProductsComponent } from './products/products.component';
 
 import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
 import { ContactComponent } from './contact/contact.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ContactComponent } from './contact/contact.component';
     AboutComponent,
     ContactComponent,
     ProductsComponent,
-    ProdComponent
+    ProdComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

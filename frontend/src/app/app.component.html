@@ -62,13 +62,28 @@
                   </a>
               </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" [routerLink]="['/login']">
+          <ul class="nav navbar-nav navbar-right" [routerLink]="['/login']" *ngIf="!logged">
               <li>
                   <a class="faa-parent animated-hover">
                    <i  class="fa fa-fw fa-lg fa-sign-in faa-tada faa-fast"></i>LogIn
                   </a>
               </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right" [routerLink]="['/home']" *ngIf="logged"  (click)="LogOut()">
+            <li>
+                <a class="faa-parent animated-hover">
+                 <i  class="fa fa-fw fa-lg fa-sign-out faa-tada faa-fast"></i>LogOut
+                </a>
+            </li>
+        </ul>
+          <ul class="nav navbar-nav navbar-right" [routerLink]="['/userinfo']" *ngIf="logged">
+            <li>
+                <a class="faa-parent animated-hover">
+                 <i  class="fa fa-fw fa-lg fa-user faa-tada faa-fast"></i>{{name}}
+                </a>
+            </li>
+        </ul>
+        
       </div>
   </div>
 </nav>
