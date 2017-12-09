@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
@@ -8,11 +8,20 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-
+  @Input() product_name :string;
   constructor(public router: Router,public http: Http) { }
 
   ngOnInit() {
     
+  }
+
+  Rate(){
+    console.log("rate product!");
+  }
+
+  AddToBasket(){
+    localStorage.setItem("product",this.product_name)
+    console.log("add product to basket!");
   }
 
 }

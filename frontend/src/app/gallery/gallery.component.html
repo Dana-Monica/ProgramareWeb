@@ -4,9 +4,9 @@
 
         </mat-card-content>
         <mat-card-actions align="right" >
-          <p style="float:left!important">Catelus</p>
-          <button type="button" class="btn btn-danger"> <span class="fa fa-shopping-cart" aria-hidden="true"></span>Buy</button>
-          <button type="button" class="btn btn-info"> <i class="fa fa-star" aria-hidden="true">Rate</i></button>
+          <p style="float:left!important">{{product_name}}</p>
+          <button type="button" class="btn btn-danger" (click)="AddToBasket()" > <span class="fa fa-shopping-cart" aria-hidden="true" ></span>Buy</button>
+          <button type="button" class="btn btn-info" (click)="Rate()" > <i class="fa fa-star" aria-hidden="true" >Rate</i></button>
           
         </mat-card-actions>
 </mat-card>

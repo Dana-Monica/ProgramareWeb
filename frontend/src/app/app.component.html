@@ -76,6 +76,15 @@
                 </a>
             </li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right"  (click)="BuyProducts()" *ngIf="logged">
+            <li>
+                <a class="faa-parent animated-hover">
+                 <i  class="fa fa-fw fa-lg fa-shopping-basket faa-tada faa-fast"></i>Buy Basket
+                </a>
+            </li>
+        </ul>
+        
           <ul class="nav navbar-nav navbar-right" [routerLink]="['/userinfo']" *ngIf="logged">
             <li>
                 <a class="faa-parent animated-hover">
