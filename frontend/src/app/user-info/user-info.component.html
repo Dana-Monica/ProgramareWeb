@@ -1,29 +1,48 @@
-<mat-tab-group>
+<mat-tab-group *ngIf="isAdmin">
   <mat-tab label="Orders&Returns">
     <h1 style="padding-left:5px;padding-top:1%"> Here you can find your orders : </h1>
     
   </mat-tab>
   <mat-tab label="Change credentials">
     <h1 style="padding-left:5px;padding-top:1%">Insert your new credentials :</h1>
-    <form name="form" (ngSubmit)="UpdateAccount()" style="padding-left:10%;padding-right:15%">
+    <form name="update-info" (ngSubmit)="UpdateAccount()" style="padding-left:10%;padding-right:15%">
       <div class="form-group" >
           <input type="text" class="form-control" name="mail" placeholder="E-mail" [ngModel]="new_mail" />
       </div>
       <div class="form-group" >
           <input type="password" class="form-control" name="passwor" placeholder="Password" [ngModel]="password" />
       </div>
-      <button [disabled]="loading" class="btn btn-primary" style="float : right">Update</button>
+      <button  class="btn btn-primary" style="float : right">Update</button>
   </form>
   </mat-tab>
 </mat-tab-group>
 
-<!-- <mat-tab-group>
+<mat-tab-group *ngIf="!isAdmin">
   <mat-tab label="Users">
-    <h1>Some tab content</h1>
-    <p>...</p>
+    <h1>Here is the list with all the users: </h1>
+    <mat-list role="list" style="overflow:hidden" >
+        <mat-list-item role="listitem" *ngFor="let user of users"  > 
+          <h3>{{user.user}}</h3>
+         <div  style="float:right;margin-right:10px" *ngIf="user.admin == false">
+            <button mat-button (click)="MakeAdmin(user.user)"> Make admin </button>
+          </div>
+        </mat-list-item>
+    </mat-list>
+    </mat-tab>
+  <mat-tab label="Add product" style="overflow:hidden">
+    <h1 style="padding-left:5px;padding-top:1%;overflow:hidden"> Add a new product: </h1>
+    <form name="add-product" (ngSubmit)="InsertProduct()" style="padding-left:10%;padding-right:15%">
+        <div class="form-group" >
+            <input type="text" class="form-control" name="pr_name" placeholder="Name" [(ngModel)]="pr_name" />
+        </div>
+        <div class="form-group" >
+            <input type="text" class="form-control" name="pr_cost" placeholder="Cost" [(ngModel)]="pr_cost" />
+        </div>
+        <div class="form-group" >
+            <input type="text" class="form-control" name="pr_description" placeholder="Description" [(ngModel)]="pr_description" />
+        </div>
+        <button  class="btn btn-primary" style="float : right">Insert</button>
+    </form>
   </mat-tab>
-  <mat-tab label="Add product">
-    <h1>Some more tab content</h1>
-    <p>...</p>
-  </mat-tab>
-</mat-tab-group> -->
+</mat-tab-group> 
+

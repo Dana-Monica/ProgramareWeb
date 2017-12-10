@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 mongoClient.connect(url,function(err, database){
 	if (err) return console.log(err);
 	db=database;
-	app.listen(8070,function(){
+	app.listen(8084,function(){
 		console.log('ascult');
 	})
 });
@@ -124,6 +124,45 @@ app.post('/order',function(req,res){
 // 	})
 // });
 
+
+app.get('/users',function(req,res){
+	db.collection('User').find({}).toArray(function(err,result){
+		if( err || result === null ){
+			res.status(400);
+			res.send();
+		}
+		else
+		{
+			res.send(result);
+			res.status(200);
+		}
+	})
+});
+
+app.post('/users/update',function(req,res){
+	db.collection('User').updateOne({"user":req.body.user},{$set:{"admin":true}},function(err,result){
+		if( err || res === null){
+			res.status(400);
+			res.send();
+		}else {
+			res.status(200);
+			res.send();
+		}
+	})
+})
+
+app.post('/product/add',function(req,res){
+	console.log(req.body);
+	db.collection('Produse').insertOne({"cost":req.body.cost,"name":req.body.name,"description":req.body.description,"numar":10},function(err,result){
+		if( err || res === null){
+			res.status(400);
+		}else {
+			console.log(result);
+			res.status(200);
+			res.send();
+		}
+	})
+})
 
 
 app.get('/send/mail',function(req,res){
