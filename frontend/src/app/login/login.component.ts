@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', username);
           localStorage.setItem('password', password);
           console.log(response.json()['admin']);
+          localStorage.setItem("mail",response.json()['mail'])
           localStorage.setItem('admin',response.json()['admin']);
           this.router.navigate(['asdasd']);
         },

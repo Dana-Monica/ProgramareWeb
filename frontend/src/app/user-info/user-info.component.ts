@@ -22,7 +22,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
   constructor(  public http: Http) { }
 
   getUsers(){
-    this.http.get('http://localhost:8084/users')
+    this.http.get('http://localhost:8079/users')
       .subscribe(
         response => {
           this.users = response.json();
@@ -39,11 +39,57 @@ export class UserInfoComponent implements OnInit , DoCheck {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
 
-    this.http.post('http://localhost:8084/users/update', body , {headers:headers})
+    this.http.post('http://localhost:8079/users/update', body , {headers:headers})
       .subscribe(
         response => {
             console.log("User Updated!");
             this.getUsers();
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      )
+  }
+
+  MakeRetur(id){
+    let body = JSON.stringify({ user : localStorage.getItem('user') , order_id : id  });
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    
+    console.log("Befor : " + body);
+    
+    this.http.post('http://localhost:8010/retur', body , {headers:headers})
+      .subscribe(
+        response => {
+            console.log("Products Returned!");
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      )
+  }
+
+  UpdateAccount(){
+    let body : any
+    if( this.new_mail != "" && this.password != "")
+        body = JSON.stringify({ user :localStorage.getItem("user") ,mail : this.new_mail,password : this.password});
+    else if ( this.new_mail != "" )
+        body = JSON.stringify({user :localStorage.getItem("user") , mail : this.new_mail , password :localStorage.getItem("pass") })
+    else body = JSON.stringify({ user :localStorage.getItem("user") , password : this.password , mail : localStorage.getItem("mail") })
+    let headers = new Headers();
+  
+    this.new_mail = ""
+    this.password = ""
+    console.log("Insert!");
+    headers.append('Content-Type','application/json');
+
+    this.http.post('http://localhost:8079/users/credentials', body , {headers:headers})
+      .subscribe(
+        response => {
+            console.log(response.json());
+            console.log("User updated!");
         },
         error => {
           alert(error.text());
@@ -61,7 +107,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
     console.log("Insert!");
     headers.append('Content-Type','application/json');
 
-    this.http.post('http://localhost:8084/product/add', body , {headers:headers})
+    this.http.post('http://localhost:8079/product/add', body , {headers:headers})
       .subscribe(
         response => {
             console.log("Product added!");
@@ -75,18 +121,21 @@ export class UserInfoComponent implements OnInit , DoCheck {
 
   ngOnInit() {
     this.getUsers();
+    this.getOrders();
+  }
 
+  getOrders(){
     let body = JSON.stringify({user : localStorage.getItem("user")});
     console.log(body);
     
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-
-    this.http.post('http://localhost:8084/order', body, { headers: headers })
+    console.log(body);
+    this.http.post('http://localhost:8010/order', body, { headers: headers })
     .subscribe(
       response => {
-          console.log("order added!");
           this.orders = response.json()    
+          console.log(this.orders);
       },
       error => {
         alert(error.text());
@@ -96,10 +145,12 @@ export class UserInfoComponent implements OnInit , DoCheck {
   }
 
   ngDoCheck() {
+    console.log(localStorage.getItem("admin") );
     if( localStorage.getItem("admin") == "true")
       this.isAdmin = true
     else
       this.isAdmin = false
+    //this.getOrders();
   }
 
 }
