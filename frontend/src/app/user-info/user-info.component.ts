@@ -59,7 +59,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
     
     console.log("Befor : " + body);
     
-    this.http.post('http://localhost:8010/retur', body , {headers:headers})
+    this.http.post('http://localhost:8079/retur', body , {headers:headers})
       .subscribe(
         response => {
             console.log("Products Returned!");
@@ -131,7 +131,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     console.log(body);
-    this.http.post('http://localhost:8010/order', body, { headers: headers })
+    this.http.post('http://localhost:8079/order', body, { headers: headers })
     .subscribe(
       response => {
           this.orders = response.json()    
