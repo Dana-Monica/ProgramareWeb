@@ -19,6 +19,10 @@ export class GalleryComponent implements OnInit {
     console.log("rate product!");
   }
 
+  SelectProduct(product_name){
+    localStorage.setItem("SelectedProduct",product_name)
+  }
+
   AddToBasket(){
     localStorage.setItem("product",this.product_name)
     console.log("add product to basket!");

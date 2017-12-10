@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
           console.log("HELLO!");
           localStorage.setItem('user', username);
           localStorage.setItem('password', password);
+          console.log(response.json()['admin']);
+          localStorage.setItem('admin',response.json()['admin']);
           this.router.navigate(['asdasd']);
         },
         error => {

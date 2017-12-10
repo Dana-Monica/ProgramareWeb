@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     { path: 'contact',          component: ContactComponent },
     { path :'userinfo',        component:UserInfoComponent},
     { path: 'products',         component: ProductsComponent },
-    { path: 'products/prod' ,   component:ProdComponent },
+    { path: 'description' ,   component:ProdComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: 'home' }
 ];

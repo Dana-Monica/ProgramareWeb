@@ -10,26 +10,25 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class ProductsComponent implements OnInit {
 
-  items : any  = {}
+  items : any 
 
   constructor(public router: Router, public http: Http) {
     
    }
 
   ngOnInit() {
-    //TODO get list of items from DB
-    // this.http.get('http://localhost:8079/products')
-    // .subscribe(
-    //   response => {
-    //     console.log("HELLO!");
-    //     this.items = response;
-    //   },
-    //   error => {
-    //     alert(error.text());
-    //     console.log(error.text());
-    //   }
-    // );
-    this.items = ["First","Second","Third"]
+    console.log("Initialize products array!");
+    this.http.get('http://localhost:8070/products')
+    .subscribe(
+      response => {
+        let answear = response.json();
+        this.items = answear;        
+      },
+      error => {
+        alert(error.text());
+        console.log(error.text());
+      }
+    );
   }
 
 }

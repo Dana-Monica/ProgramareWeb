@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+
 
 @Component({
   selector: 'app-user-info',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor() { }
+  new_mail = ""
+  password = ""
+  orders : any
+  constructor(  public http: Http) { }
 
   ngOnInit() {
+    let body = JSON.stringify({user : localStorage.getItem("user")});
+    console.log(body);
+    
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    this.http.post('http://localhost:8079/order', body, { headers: headers })
+    .subscribe(
+      response => {
+          console.log("order added!");
+          this.orders = response.json()    
+      },
+      error => {
+        alert(error.text());
+        console.log(error.text());
+      }
+    );
   }
 
 }

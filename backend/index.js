@@ -18,19 +18,21 @@ app.use(function (req, res, next) {
 mongoClient.connect(url,function(err, database){
 	if (err) return console.log(err);
 	db=database;
-	app.listen(8079,function(){
+	app.listen(8070,function(){
 		console.log('ascult');
 	})
 });
 
 app.post('/login',function(req, res) {
-	nr=db.collection('User').find({'user':req.body.username, 'password':req.body.password}).count(function(err, results) {
-		if( results == 1 ){
-			res.status(200);
-			res.send("You are good to go!");
-		}else{
+	nr=db.collection('User').findOne({'user':req.body.username, 'password':req.body.password},function(err, results) {
+		console.log(results);
+		if ( err || results === null) {
 			res.status(400);
 			res.send("Wrong crendetials");
+		}
+		else {
+			res.status(200);
+			res.json({"admin":results.admin})
 		}
 	});
 });
@@ -53,8 +55,8 @@ app.post('/register',function(req, res) {
 });
 
 app.get('/products',function(req, res) {
-	nr=db.collection('Produse').find({},function(err,result){
-		if(err)
+	nr=db.collection('Produse').find({}).toArray(function(err,result){
+		if(err || result === null)
 		{
 			console.log(e);
 			res.status(400);
@@ -63,9 +65,9 @@ app.get('/products',function(req, res) {
 		else
 		{
 			console.log("received products from db");
+			console.log(result);
 			res.status(200);
-			res.send(result);
-			//Return JSON
+			res.json(result);
 		}
 	});
 });
@@ -87,6 +89,41 @@ app.get('/products/information',function(req, res) {
 	});
 });
 
+app.post('/putorder',function(req,res){
+	db.collection('Comenzi').insertOne({'comanda':req.body.products,user:req.body.user},function(err,result){
+		if( err || result === null ){
+			res.status(400);
+			res.send("Nasol");
+		}else{
+			res.send("The order was placed!");
+			res.status(200);
+		}
+	})
+});
+
+app.post('/order',function(req,res){
+	db.collection('Comenzi').find({'user':req.body.user}).toArray(function(err,result){
+		if( err || result === null ){
+			res.status(400);
+			res.send("Nasol");
+		}else{
+			res.send(result);
+			res.status(200);
+		}
+	})
+});
+
+// app.post('/updateproduct',function(req,res){
+// 	db.collection('Produse').findOne({'name':req.body.product},function(err,result){
+// 		if( err || result === null ){
+			
+// 		}else{
+// 			res.send("The order was placed!");
+// 			res.status(200);
+// 		}
+// 	})
+// });
+
 
 
 app.get('/send/mail',function(req,res){
@@ -94,7 +131,7 @@ app.get('/send/mail',function(req,res){
 	var message = req.body.message;
 	var phone = req.body.phone;
 	var fullName = req.body.name;
-	db.collection('contacts').insertOne({'email':email, 'message':message, 'fullName':fullname,'phone':phone},function(err,result){
+	db.collection('Contact').insertOne({'email':email, 'message':message, 'fullName':fullname,'phone':phone},function(err,result){
 		if(err)
 		{
 			console.log(e);

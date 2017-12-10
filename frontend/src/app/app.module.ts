@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -50,8 +52,10 @@ import { BuyProductsDialogComponent } from './buy-products-dialog/buy-products-d
     FormsModule,
     HttpModule,
     MatCardModule,
+    MatSnackBarModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: 
     [AuthGuard,
