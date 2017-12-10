@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prod.component.css']
 })
 export class ProdComponent implements OnInit {
-
+  new_comment : string
+  comments : any 
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  AddComment( ){
+    alert(this.new_comment);
+    this.new_comment = ""
   }
 
 }

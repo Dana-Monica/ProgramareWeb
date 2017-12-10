@@ -11,10 +11,16 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class ProductsComponent implements OnInit {
 
   items : any 
+  new_comment : string
 
   constructor(public router: Router, public http: Http) {
     
-   }
+  }
+
+  AddComment( ){
+    alert(this.new_comment);
+  }
+
 
   ngOnInit() {
     console.log("Initialize products array!");

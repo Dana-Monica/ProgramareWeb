@@ -1,3 +1,55 @@
-<h1>
-  Here we will find details about a certain products!
-</h1>
+<div class="row">
+  <div class="col-md-8"> <h1> Name : </h1> </div>
+  <div class="col-md-4"> <h3> Price : </h3> </div> 
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+      <h3>Description :</h3>
+  </div>
+  
+  <div class="col-md-2">
+      <!-- <img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  </div>
+
+</div>
+
+<div class="row">
+  
+  <div class="col-md-1">
+
+  </div>
+  
+  <div class="col-md-2">
+    <h3> Comments:</h3>
+  </div>
+ 
+</div>
+
+<div class="row">
+    <mat-card>Comment 1</mat-card>
+    
+</div>
+
+<div class="row">
+    <mat-card>Comment 2</mat-card>
+    
+</div>
+
+<div class="row">
+    <mat-card>Comment 3</mat-card>
+</div>
+<div class="row">
+    <mat-card>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Add a new comment" [(ngModel)]="new_comment">
+          </mat-form-field>
+          <button class="btn btn-primary" style="float:right" (click)="AddComment()">Add</button>
+    </mat-card>
+    
+</div>
+
+<div class="row" style="margin-top:4%">
+  <button  style="margin-left:45%"(click)="BuyProduct()" class="btn btn-success"> <span class="fa fa-shopping-cart" aria-hidden="true" ></span> Buy</button>
+  <button  (click)="RateProduct()" class="btn btn-info">RateProduct</button>
+</div>

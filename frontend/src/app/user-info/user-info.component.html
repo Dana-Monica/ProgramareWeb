@@ -5,7 +5,7 @@
         <mat-list-item role="listitem" *ngFor="let order of orders"  > 
           <h3>{{order.comanda}}</h3>
          <div  style="float:right;margin-right:10px" *ngIf="order.my_id == false" >
-            <button mat-button (click)="MakeRetur(order.my_id)"> Returneaza </button>
+            <button class="btn btn-success" (click)="MakeRetur(order.my_id)"> Returneaza </button>
           </div>
         </mat-list-item>
     </mat-list>
@@ -31,7 +31,7 @@
         <mat-list-item role="listitem" *ngFor="let user of users"  > 
           <h3>{{user.user}}</h3>
          <div  style="float:right;margin-right:10px" *ngIf="user.admin == false">
-            <button mat-button (click)="MakeAdmin(user.user)"> Make admin </button>
+            <button class="btn btn-success" (click)="MakeAdmin(user.user)"> Make admin </button>
           </div>
         </mat-list-item>
     </mat-list>

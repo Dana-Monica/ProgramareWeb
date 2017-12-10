@@ -9,6 +9,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -57,6 +60,7 @@ import { BuyProductsDialogComponent } from './buy-products-dialog/buy-products-d
     MatDialogModule,
     MatButtonModule,
     MatTabsModule,
+    MatInputModule,
     MatListModule
   ],
   providers: 
