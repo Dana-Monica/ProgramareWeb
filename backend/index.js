@@ -209,3 +209,15 @@ app.get('/send/mail',function(req,res){
 		}
 	});
 })
+
+app.post('/comment/add',function(req,res){
+	db.collection('Produse').updateOne({'name':req.body.name},{$push:{comments : req.body.comment}},function(err,result){
+		if( err || result == null){
+			res.status(400);
+			res.send();
+		}else{
+			res.status(200);
+			res.send();
+		}
+	})
+});

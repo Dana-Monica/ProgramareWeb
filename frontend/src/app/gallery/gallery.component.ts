@@ -2,6 +2,8 @@ import { Component, OnInit ,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
+import { SharedInfoComponent } from '../shared-info/shared-info.component';
+
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -9,6 +11,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class GalleryComponent implements OnInit {
   @Input() product_name :string;
+  @Input() index : number;
   constructor(public router: Router,public http: Http) { }
 
   ngOnInit() {
@@ -21,6 +24,8 @@ export class GalleryComponent implements OnInit {
 
   SelectProduct(product_name){
     localStorage.setItem("SelectedProduct",product_name)
+    console.log(this.index);
+    SharedInfoComponent.index = this.index;
   }
 
   AddToBasket(){

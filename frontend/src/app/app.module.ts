@@ -29,6 +29,7 @@ import {  MATERIAL_SANITY_CHECKS } from '@angular/material';
 import { ContactComponent } from './contact/contact.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { BuyProductsDialogComponent } from './buy-products-dialog/buy-products-dialog.component';
+import { SharedInfoComponent } from './shared-info/shared-info.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { BuyProductsDialogComponent } from './buy-products-dialog/buy-products-d
     ProductsComponent,
     ProdComponent,
     UserInfoComponent,
-    BuyProductsDialogComponent
+    BuyProductsDialogComponent,
+    SharedInfoComponent
   ],
   imports: [
     BrowserAnimationsModule,

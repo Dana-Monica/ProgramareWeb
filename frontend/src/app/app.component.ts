@@ -69,7 +69,7 @@ export class AppComponent implements DoCheck {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        if( this.cart.size != 0 ){
+        if( this.cart.size != 0 && result == true ){
           
           console.log("Create order!");
           let my_id : string

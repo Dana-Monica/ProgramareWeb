@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
+import { SharedInfoComponent } from '../shared-info/shared-info.component';
 
 @Component({
   selector: 'app-products',
@@ -21,13 +21,14 @@ export class ProductsComponent implements OnInit {
     alert(this.new_comment);
   }
 
-
   ngOnInit() {
     console.log("Initialize products array!");
-    this.http.get('http://localhost:8070/products')
+    this.http.get('http://localhost:8079/products')
     .subscribe(
       response => {
         let answear = response.json();
+        SharedInfoComponent.items = answear;
+        console.log(SharedInfoComponent.items);
         this.items = answear;        
       },
       error => {
