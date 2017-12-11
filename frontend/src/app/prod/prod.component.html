@@ -27,8 +27,10 @@
  
 </div>
 
-<div class="row" *ngFor = "let comment of comments">
-    <mat-card>{{comment}}</mat-card>
+<div class="row" *ngFor = "let comment of comments ; let i = index">
+    <mat-card>{{comment}}
+        <button class="btn btn-danger" style="float:right" *ngIf="isAdmin" (click)="DeleteComment(i,comment)">Delete</button>
+    </mat-card>
     
 </div>
 
