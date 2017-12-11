@@ -15,11 +15,15 @@ export class UserInfoComponent implements OnInit , DoCheck {
   pr_cost = ""
   pr_name = ""
   pr_description = ""
+
+  name=""
   
   isAdmin : boolean
   orders : any
   users : any
-  constructor(  public http: Http) { }
+  constructor(  public http: Http) {
+    this.name=localStorage.getItem("user");
+  }
 
   getUsers(){
     this.http.get('http://localhost:8079/users')

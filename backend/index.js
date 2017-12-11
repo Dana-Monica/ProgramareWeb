@@ -61,7 +61,7 @@ app.get('/products',function(req, res) {
 	nr=db.collection('Produse').find({}).toArray(function(err,result){
 		if(err || result === null)
 		{
-			console.log(e);
+			console.log(err);
 			res.status(400);
 			res.send("Could not retrieve products from Mongo!");
 		}

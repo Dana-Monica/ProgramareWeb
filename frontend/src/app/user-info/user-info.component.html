@@ -4,7 +4,7 @@
   
 
     <div class="row" *ngFor = "let order of orders; let i = index" style="overflow:hidden!important" >
-        <mat-card style="overflow:hidde!important"> 
+        <mat-card style="overflow:hidden!important"> 
             {{order.comanda}}
             <button class="btn btn-success" style="float:right" *ngIf="order.return == false"  (click)="MakeRetur(order.my_id)"> Returneaza </button>
         </mat-card>
@@ -28,11 +28,11 @@
 </mat-tab-group>
 
 <mat-tab-group *ngIf="isAdmin">
-  <mat-tab label="Users" style="overflow:hidde!important">
+  <mat-tab label="Users" style="overflow:hidden!important">
     <h1>Here is the list with all the users: </h1>
     
-    <div class="row" *ngFor = "let user of users; let i = index" style="overflow:hidde!important" >
-        <mat-card style="overflow:hidde!important"> 
+    <div class="row" *ngFor = "let user of users; let i = index" style="overflow:hidden!important" >
+        <mat-card style="overflow:hidden!important"> 
             {{user.user}}
             <button class="btn btn-success" style="float:right" *ngIf="user.admin == false" (click)="MakeAdmin(user.user)">Make Admin</button>
             <button class="btn btn-danger" style="float:right; margin-right:10px" *ngIf="user.user != name" (click)="DeleteUser(user.user)">Delete Account</button>

@@ -5,4 +5,5 @@
 .mat-tab-body.mat-tab-body-active{
     overflow:hidden!important;
     overflow-y:hidden!important;
+    overflow-x:hidden!important;
 }
