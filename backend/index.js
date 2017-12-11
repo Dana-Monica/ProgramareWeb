@@ -151,6 +151,11 @@ app.post('/users/update',function(req,res){
 	})
 })
 
+
+app.post('/users/update',function(req,res){
+	db.collection('User').delete_one({"user":req.body.user},stardard_response(err,result))
+})
+
 app.post('/retur',function(req,res){
 	db.collection('Comenzi').updateOne({user: req.body.user , my_id: req.body.order_id},{$set:{"return":true}} ,function(err,result){
 		if( err || res === null){
@@ -211,25 +216,24 @@ app.get('/send/mail',function(req,res){
 })
 
 app.post('/comment/add',function(req,res){
-	db.collection('Produse').updateOne({'name':req.body.name},{$push:{comments : req.body.comment}},function(err,result){
-		if( err || result == null){
-			res.status(400);
-			res.send();
-		}else{
-			res.status(200);
-			res.send();
-		}
-	})
+	db.collection('Produse').updateOne({'name':req.body.name},{$push:{comments : req.body.comment}},stardard_response(err,result))
 });
 
 app.post('/comment/delete',function(req,res){
-	db.collection('Produse').updateOne({'name':req.body.name},{$pull:{comments : {$in : [req.body.comment]}}},function(err,result){
-		if( err || result == null){
-			res.status(400);
-			res.send();
-		}else{
-			res.status(200);
-			res.send();
-		}
-	})
+	db.collection('Produse').updateOne({'name':req.body.name},{$pull:{comments : {$in : [req.body.comment]}}},stardard_response(err,result))
 });
+
+function stardard_response(err,result){
+	if( err || result == null){
+		res.status(400);
+		res.send();
+	}else{
+		res.status(200);
+		res.send();
+	}
+}
+
+
+app.post('/rate/update',function(req,res){
+	db.collection('Produse').updateOne({'name':req.body.name},{$set:{nr_rates:req.body.nr_rates,rate:req.body.rate}},stardard_response(err,result))
+})

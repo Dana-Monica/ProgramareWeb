@@ -19,6 +19,11 @@ export class ProdComponent implements OnInit , DoCheck {
   description = ""
   comments = [] 
   index 
+  rate
+  nr_rates 
+  my_rate 
+  wanna_rate : false
+
 
   constructor(public http : Http) {
      this.items = SharedInfoComponent.items;
@@ -27,6 +32,31 @@ export class ProdComponent implements OnInit , DoCheck {
      this.price = this.items[this.index].cost
      this.description = this.items[this.index].description
      this.comments = this.items[this.index].comments
+     this.rate = this.items[this.index].rate
+     this.nr_rates = this.items[this.index].nr_rates
+  }
+
+  DoRate(rate){
+    this.rate = ( this.rate + this.my_rate ) / (this.nr_rates + 1)
+
+    let body = JSON.stringify({rate : this.rate , nr_rate : this.nr_rates+1 , name : this.name});
+    console.log(body);
+
+    this.new_comment = ""
+    
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    this.http.post('http://localhost:8079/rate/update', body, { headers: headers })
+    .subscribe(
+      response => {
+          console.log("rate was updated!");            
+      },
+      error => {
+        alert(error.text());
+        console.log(error.text());
+      }
+    );
   }
 
   ngDoCheck(){

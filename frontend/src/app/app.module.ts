@@ -10,7 +10,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatSliderModule} from '@angular/material/slider';
 
 
 import { AppComponent } from './app.component';
@@ -63,7 +63,8 @@ import { SharedInfoComponent } from './shared-info/shared-info.component';
     MatButtonModule,
     MatTabsModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatSliderModule
   ],
   providers: 
     [AuthGuard,

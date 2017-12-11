@@ -98,6 +98,24 @@ export class UserInfoComponent implements OnInit , DoCheck {
       )
   }
 
+  DeleteUser(user){
+    let body = JSON.stringify({user : user });
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    this.http.post('http://localhost:8079/users/delete', body , {headers:headers})
+      .subscribe(
+        response => {
+            console.log("User Deleted!");
+            this.getUsers();
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      )
+  }
+
   InsertProduct(){
     let body = JSON.stringify({cost : this.pr_cost , name : this.pr_name , description : this.pr_description });
     let headers = new Headers();
