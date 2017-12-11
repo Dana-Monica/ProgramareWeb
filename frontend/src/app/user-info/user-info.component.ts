@@ -63,6 +63,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
       .subscribe(
         response => {
             console.log("Products Returned!");
+            this.getOrders();
         },
         error => {
           alert(error.text());
@@ -102,7 +103,7 @@ export class UserInfoComponent implements OnInit , DoCheck {
     let body = JSON.stringify({user : user });
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-
+    console.log(body);
     this.http.post('http://localhost:8079/users/delete', body , {headers:headers})
       .subscribe(
         response => {

@@ -23,6 +23,9 @@ mongoClient.connect(url,function(err, database){
 	})
 });
 
+
+
+
 app.post('/login',function(req, res) {
 	nr=db.collection('User').findOne({'user':req.body.username, 'password':req.body.password},function(err, results) {
 		console.log(results);
@@ -38,7 +41,7 @@ app.post('/login',function(req, res) {
 });
 
 app.post('/register',function(req, res) {
-	nr=db.collection('User').insertOne({'user':req.body.usernam, 'password':req.body.passwor, 'mail':req.body.mail, 'nume':req.body.nume},function(err,result){
+	nr=db.collection('User').insertOne({'user':req.body.usernam, 'password':req.body.passwor, 'mail':req.body.mail, 'nume':req.body.nume , 'admin':false},function(err,result){
 		if(err)
 		{
 			console.log(e);
@@ -90,7 +93,7 @@ app.get('/products/information',function(req, res) {
 });
 
 app.post('/putorder',function(req,res){
-	db.collection('Comenzi').insertOne({'comanda':req.body.products,user:req.body.user},function(err,result){
+	db.collection('Comenzi').insertOne({'comanda':req.body.products,user:req.body.user , my_id : req.body.order_id , return :false},function(err,result){
 		if( err || result === null ){
 			res.status(400);
 			res.send("Nasol");
@@ -152,8 +155,16 @@ app.post('/users/update',function(req,res){
 })
 
 
-app.post('/users/update',function(req,res){
-	db.collection('User').delete_one({"user":req.body.user},stardard_response(err,result))
+app.post('/users/delete',function(req,res){
+	db.collection('User').deleteOne({"user":req.body.user},function(err,result){ 
+			if( err || result == null){ 	
+					res.status(400); 	
+					res.send(); 
+			}else{ 	
+					res.status(200); 		
+					res.send(); 	
+		}
+	})
 })
 
 app.post('/retur',function(req,res){
@@ -182,7 +193,7 @@ app.post('/users/credentials',function(req,res){
 
 app.post('/product/add',function(req,res){
 	console.log(req.body);
-	db.collection('Produse').insertOne({"cost":req.body.cost,"name":req.body.name,"description":req.body.description,"numar":10},function(err,result){
+	db.collection('Produse').insertOne({"cost":req.body.cost,"name":req.body.name,"description":req.body.description,"numar":10 ,"nr_rates":0, "rate":0},function(err,result){
 		if( err || res === null){
 			res.status(400);
 		}else {
@@ -216,24 +227,39 @@ app.get('/send/mail',function(req,res){
 })
 
 app.post('/comment/add',function(req,res){
-	db.collection('Produse').updateOne({'name':req.body.name},{$push:{comments : req.body.comment}},stardard_response(err,result))
+	db.collection('Produse').updateOne({'name':req.body.name},{$push:{comments : req.body.comment}},function(err,result){ 
+			if( err || result == null){ 	
+					res.status(400); 		
+					res.send(); 	
+			}else{ 		
+					res.status(200); 	
+					res.send(); 	
+			} 
+	})
 });
 
 app.post('/comment/delete',function(req,res){
-	db.collection('Produse').updateOne({'name':req.body.name},{$pull:{comments : {$in : [req.body.comment]}}},stardard_response(err,result))
+	db.collection('Produse').updateOne({'name':req.body.name},{$pull:{comments : {$in : [req.body.comment]}}},function(err,result){ 	
+		if( err || result == null){ 		
+			res.status(400); 		
+			res.send(); 	
+		}else{ 		
+			res.status(200); 
+			res.send(); 
+		} 
+	})
 });
 
-function stardard_response(err,result){
-	if( err || result == null){
-		res.status(400);
-		res.send();
-	}else{
-		res.status(200);
-		res.send();
-	}
-}
 
 
 app.post('/rate/update',function(req,res){
-	db.collection('Produse').updateOne({'name':req.body.name},{$set:{nr_rates:req.body.nr_rates,rate:req.body.rate}},stardard_response(err,result))
+	db.collection('Produse').updateOne({'name':req.body.name},{$set:{nr_rates:req.body.nr_rate,rate:req.body.rate}},function(err,result){ 	
+		if( err || result == null){ 	
+				res.status(400); 	
+				res.send(); 	
+		}else{ 		
+				res.status(200); 		
+				res.send(); 	
+		}
+	})
 })

@@ -72,15 +72,15 @@ export class AppComponent implements DoCheck {
         if( this.cart.size != 0 && result == true ){
           
           console.log("Create order!");
-          let my_id : string
+          let create_id = ""
           this.my_products_array = []
           this.cart.forEach( v => {
             this.my_products_array.push(v)
-            this.UpdateProduct(v)
-            my_id += v
+            //this.UpdateProduct(v)
+            create_id = create_id.concat(v)
           })
           
-          let body = JSON.stringify({user:localStorage.getItem("user"),products : this.my_products_array , order_id : my_id});
+          let body = JSON.stringify({user:localStorage.getItem("user"),products : this.my_products_array , order_id : create_id});
           console.log(body);
           
           let headers = new Headers();

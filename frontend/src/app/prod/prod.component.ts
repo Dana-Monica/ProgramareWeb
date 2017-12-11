@@ -34,12 +34,16 @@ export class ProdComponent implements OnInit , DoCheck {
      this.comments = this.items[this.index].comments
      this.rate = this.items[this.index].rate
      this.nr_rates = this.items[this.index].nr_rates
+      console.log(this.comments);
+     if( this.comments === undefined )
+      this.comments = []
   }
 
   DoRate(rate){
-    this.rate = ( this.rate + this.my_rate ) / (this.nr_rates + 1)
-
-    let body = JSON.stringify({rate : this.rate , nr_rate : this.nr_rates+1 , name : this.name});
+    this.nr_rates += 1
+    this.rate = ( this.rate + this.my_rate ) / (this.nr_rates )
+    
+    let body = JSON.stringify({rate : this.rate , nr_rate : this.nr_rates  , name : this.name});
     console.log(body);
 
     this.new_comment = ""
@@ -67,8 +71,10 @@ export class ProdComponent implements OnInit , DoCheck {
   }
 
   DeleteComment(index , comment){
-  
-    this.comments.splice(index,0,comment);
+    console.log(comment);
+    console.log(index);
+    this.comments.splice(index,1);
+    console.log(this.comments);
     let body = JSON.stringify({comment : comment , name : this.name});
     console.log(body);
 
@@ -80,7 +86,7 @@ export class ProdComponent implements OnInit , DoCheck {
     this.http.post('http://localhost:8079/comment/delete', body, { headers: headers })
     .subscribe(
       response => {
-          console.log("comment was added!");            
+          console.log("comment was deleted!");            
       },
       error => {
         alert(error.text());
