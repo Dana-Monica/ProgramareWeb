@@ -12,6 +12,7 @@ import { SharedInfoComponent } from '../shared-info/shared-info.component';
 export class GalleryComponent implements OnInit {
   @Input() product_name :string;
   @Input() index : number;
+  @Input() image_location : string;
   constructor(public router: Router,public http: Http) { }
 
   ngOnInit() {

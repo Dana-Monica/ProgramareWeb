@@ -1,10 +1,10 @@
 <mat-card class="example-card" [routerLink]="['/description']" (click)="SelectProduct(product_name)"> 
-        <img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="{{image_location}}" alt="Photo of a vegetable">
         <mat-card-content>
 
         </mat-card-content>
         <mat-card-actions align="right" >
           <p style="float:left!important">{{product_name}}</p>
-          <button type="button" class="btn btn-danger" (click)="AddToBasket()" > <span class="fa fa-shopping-cart" aria-hidden="true" ></span>Buy</button>   
+          <button type="button" class="btn btn-info" > <span class="fa fa-info-circle" aria-hidden="true" ></span>More Info</button>   
         </mat-card-actions>
 </mat-card>

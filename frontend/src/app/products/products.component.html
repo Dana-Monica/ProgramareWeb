@@ -1,7 +1,7 @@
 <div style="margin : 5px" >
 
   <div class="col-md-4" *ngFor="let item of items ; let i=index" >
-      <app-gallery [product_name]="item.name" [index] = "i" ></app-gallery>
+      <app-gallery [product_name]="item.name" [index] = "i" [image_location]="item.image_location"></app-gallery>
   </div> 
   
 </div>
