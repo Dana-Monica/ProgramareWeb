@@ -40,10 +40,12 @@
 
     <div class="row">
         <mat-card>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Add a new comment" [(ngModel)]="new_comment">
-            </mat-form-field>
-            <button class="btn btn-primary" style="float:right" (click)="AddComment()">Add</button>
+                <div class="input-group">
+                        <span class="input-group-btn"  (click)="AddComment()" >
+                            <button class="btn btn-default" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                          </span>
+                        <input type="text" class="form-control" placeholder="Add a new comment"  [(ngModel)]="new_comment" aria-describedby="basic-addon1">
+                </div>
         </mat-card>
         
     </div>

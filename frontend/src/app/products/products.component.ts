@@ -11,7 +11,9 @@ import { SharedInfoComponent } from '../shared-info/shared-info.component';
 export class ProductsComponent implements OnInit {
 
   items : any 
+  items_copy : any
   new_comment : string
+  searched_item : string
 
   constructor(public router: Router, public http: Http) {
     
@@ -19,6 +21,21 @@ export class ProductsComponent implements OnInit {
 
   AddComment( ){
     alert(this.new_comment);
+  }
+
+  filterItem(value){
+    console.log("Value is : " + value );
+    console.log(this.items_copy);
+    if(!value) this.items = this.items_copy;
+    else{
+       this.items = []
+       this.items_copy.forEach(
+           item => {
+              if ( item.name.startsWith(value))
+                this.items.push(item)
+           }
+      )
+    }
   }
 
   ngOnInit() {
@@ -30,6 +47,7 @@ export class ProductsComponent implements OnInit {
         SharedInfoComponent.items = answear;
         console.log(SharedInfoComponent.items);
         this.items = answear;        
+        this.items_copy = this.items
       },
       error => {
         alert(error.text());
