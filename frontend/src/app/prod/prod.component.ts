@@ -46,7 +46,6 @@ export class ProdComponent implements OnInit , DoCheck {
     let body = JSON.stringify({rate : this.rate , nr_rate : this.nr_rates  , name : this.name});
     console.log(body);
 
-    this.new_comment = ""
     
     let headers = new Headers();
     headers.append('Content-Type','application/json');

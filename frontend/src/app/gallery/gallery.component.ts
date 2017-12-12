@@ -25,8 +25,16 @@ export class GalleryComponent implements OnInit {
 
   SelectProduct(product_name){
     localStorage.setItem("SelectedProduct",product_name)
-    console.log(this.index);
-    SharedInfoComponent.index = this.index;
+    console.log(product_name);
+    let index = -1 ;
+    for ( var i = 0 ; i < SharedInfoComponent.items.length ; ++i )
+      {
+        console.log( SharedInfoComponent.items[i]['name']);
+        if( SharedInfoComponent.items[i]['name'] == product_name)
+            index = i;
+      }
+    console.log(index);
+    SharedInfoComponent.index = index;
   }
 
   AddToBasket(){
