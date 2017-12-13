@@ -78,22 +78,31 @@ export class UserInfoComponent implements OnInit , DoCheck {
 
   UpdateAccount(){
     let body : any
-    if( this.new_mail != "" && this.password != "")
+    if( this.new_mail != "" && this.password != ""){
+        localStorage.setItem("mail" , this.new_mail)
+        localStorage.setItem("password",this.password);
         body = JSON.stringify({ user :localStorage.getItem("user") ,mail : this.new_mail,password : this.password});
-    else if ( this.new_mail != "" )
-        body = JSON.stringify({user :localStorage.getItem("user") , mail : this.new_mail , password :localStorage.getItem("pass") })
-    else body = JSON.stringify({ user :localStorage.getItem("user") , password : this.password , mail : localStorage.getItem("mail") })
+    }
+    else if ( this.new_mail != "" ){
+        localStorage.setItem("mail" , this.new_mail)
+        body = JSON.stringify({user :localStorage.getItem("user") , mail : this.new_mail , password :localStorage.getItem("password") })
+    }
+    else{
+         body = JSON.stringify({ user :localStorage.getItem("user") , password : this.password , mail : localStorage.getItem("mail") })
+         localStorage.setItem("password",this.password);
+    }
     let headers = new Headers();
-  
+    
     this.new_mail = ""
     this.password = ""
     console.log("Insert!");
+    console.log(body);
     headers.append('Content-Type','application/json');
 
     this.http.post('http://localhost:8079/users/credentials', body , {headers:headers})
       .subscribe(
         response => {
-            console.log(response.json());
+            
             console.log("User updated!");
         },
         error => {

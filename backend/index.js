@@ -35,7 +35,7 @@ app.post('/login',function(req, res) {
 		}
 		else {
 			res.status(200);
-			res.json({"admin":results.admin})
+			res.json({"admin":results.admin,"mail":results.mail})
 		}
 	});
 });
@@ -180,7 +180,7 @@ app.post('/retur',function(req,res){
 })
 
 app.post('/users/credentials',function(req,res){
-	db.collection('User').updateOne({"user":req.body.user},{$set:{"mail":req.body.user,"password":req.body.password}},function(err,result){
+	db.collection('User').updateOne({"user":req.body.user},{$set:{"mail":req.body.mail,"password":req.body.password}},function(err,result){
 		if( err || res === null){
 			res.status(400);
 			res.send();

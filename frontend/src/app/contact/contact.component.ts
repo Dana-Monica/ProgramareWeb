@@ -29,10 +29,7 @@ export class ContactComponent implements OnInit {
       .subscribe(
         response => {
           console.log("Hello from Contact!");
-          localStorage.setItem('name',name);
-          localStorage.setItem('mail',mail);
-          localStorage.setItem('phone',phone);
-          localStorage.setItem('message',message);
+
           this.router.navigate(['contact']);
         },
         error => {
