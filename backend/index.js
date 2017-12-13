@@ -205,12 +205,12 @@ app.post('/product/add',function(req,res){
 })
 
 
-app.get('/send/mail',function(req,res){
+app.post('/send/mail',function(req,res){
 	var email = req.body.mail;
 	var message = req.body.message;
 	var phone = req.body.phone;
 	var fullName = req.body.name;
-	db.collection('Contact').insertOne({'email':email, 'message':message, 'fullName':fullname,'phone':phone},function(err,result){
+	db.collection('Contact').insertOne({'email':email, 'message':message, 'fullName':fullName,'phone':phone},function(err,result){
 		if(err)
 		{
 			console.log(e);

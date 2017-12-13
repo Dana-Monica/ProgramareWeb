@@ -25,7 +25,7 @@ export class ContactComponent implements OnInit {
     headers.append('Content-Type','application/json');
 
     console.log(body);
-    this.http.post('http://localhost:8079/send/email', body, { headers: headers})
+    this.http.post('http://localhost:8079/send/mail', body, { headers: headers})
       .subscribe(
         response => {
           console.log("Hello from Contact!");
